@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: question-generator-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app/app
+      - model_cache:/root/.cache/huggingface
+    environment:
+      - PYTHONUNBUFFERED=1
+
+volumes:
+  model_cache:
